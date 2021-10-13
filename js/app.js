@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 /**
  *
  * Manipulating the DOM exercise.
@@ -23,20 +23,7 @@
  * Define Global Variables
  *
  */
-const nav = document.getElementById('navbar__list');
-const sections = document.querySelectorAll('section');
-const virtualFrag = document.createDocumentFragment();
-sections.forEach(function (section) {
-  const listItem = document.createElement('li');
-  const listLink = document.createElement('a');
-  listLink.href = '#' + section.getAttribute('id');
-  listLink.innerHTML = section.getAttribute('data-nav');
-  listLink.classList.add('menu__link');
-  listItem.appendChild(listLink);
-  virtualFrag.appendChild(listItem);
-});
-console.log(virtualFrag);
-nav.appendChild(virtualFrag);
+
 /**
  * End Global Variables
  * Start Helper Functions
@@ -50,9 +37,55 @@ nav.appendChild(virtualFrag);
  */
 
 // build the nav
+const nav = document.getElementById('navbar__list');
+const sections = document.querySelectorAll('section');
+const virtualFrag = document.createDocumentFragment();
+const navLinks = document.querySelectorAll('menu__link');
+// console.log(navLinks);
+sections.forEach(section => {
+  const listItem = document.createElement('li');
+  const listLink = document.createElement('a');
+  listLink.href = '#' + section.getAttribute('id');
+  listLink.textContent = section.getAttribute('data-nav');
+  listLink.classList.add('menu__link');
+  listLink.addEventListener('click', e => {
+    e.preventDefault();
+    section.scrollIntoView({ behavior: 'smooth' });
+  });
+  listItem.appendChild(listLink);
+  virtualFrag.appendChild(listItem);
+});
+nav.appendChild(virtualFrag);
+//prevent default action when nav links clicked
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    preventDefault();
+  });
+});
 
 // Add class 'active' to section when near top of viewport
-
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    const boundingBox = sec.getBoundingClientRect();
+    if (boundingBox.top >= 0 && boundingBox.top < 500) {
+      const activeSecDataNav = sec.getAttribute('data-nav');
+      sections.forEach(activeSection =>{
+          activeSection.classList.remove('active__section');
+      });
+      sec.classList.add('active__section');
+      const allLinks = document.querySelectorAll('a');
+      allLinks.forEach(link => {
+        if (link.textContent == activeSecDataNav) {
+          allLinks.forEach(activeLink => {
+            activeLink.classList.remove('active');
+          });
+          link.classList.add('active');
+        }
+      });
+      console.log(sec.getBoundingClientRect().top);
+    }
+  });
+});
 // Scroll to anchor ID using scrollTO event
 
 /**

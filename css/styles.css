@@ -59,14 +59,16 @@ main {
 
 section {
   position: relative;
-  min-height: 80vh;
+  min-height: 100vh;
 }
-
+.active__section {
+  background: #333;
+}
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
 .navbar__menu ul {
-  padding-left: 0;
+  padding-left: 1em;
   margin: 0;
   text-align: left;
   height: 4em;
@@ -88,7 +90,8 @@ section {
   padding: 0 1em;
 }
 
-.navbar__menu .menu__link:hover {
+.navbar__menu .menu__link:hover,
+.active {
   background: #333;
   color: #fff;
   transition: ease 0.3s all;
