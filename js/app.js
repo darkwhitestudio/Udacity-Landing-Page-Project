@@ -23,7 +23,20 @@
  * Define Global Variables
  *
  */
-
+const nav = document.getElementById('navbar__list');
+const sections = document.querySelectorAll('section');
+const virtualFrag = document.createDocumentFragment();
+sections.forEach(function (section) {
+  const listItem = document.createElement('li');
+  const listLink = document.createElement('a');
+  listLink.href = '#' + section.getAttribute('id');
+  listLink.innerHTML = section.getAttribute('data-nav');
+  listLink.classList.add('menu__link');
+  listItem.appendChild(listLink);
+  virtualFrag.appendChild(listItem);
+});
+console.log(virtualFrag);
+nav.appendChild(virtualFrag);
 /**
  * End Global Variables
  * Start Helper Functions
