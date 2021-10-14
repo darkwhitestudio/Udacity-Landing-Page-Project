@@ -41,7 +41,8 @@ const nav = document.getElementById('navbar__list');
 const sections = document.querySelectorAll('section');
 const virtualFrag = document.createDocumentFragment();
 const navLinks = document.querySelectorAll('menu__link');
-// console.log(navLinks);
+const topBtn = document.getElementById('to__top');
+
 sections.forEach(section => {
   const listItem = document.createElement('li');
   const listLink = document.createElement('a');
@@ -69,8 +70,8 @@ window.addEventListener('scroll', () => {
     const boundingBox = sec.getBoundingClientRect();
     if (boundingBox.top >= 0 && boundingBox.top < 500) {
       const activeSecDataNav = sec.getAttribute('data-nav');
-      sections.forEach(activeSection =>{
-          activeSection.classList.remove('active__section');
+      sections.forEach(activeSection => {
+        activeSection.classList.remove('active__section');
       });
       sec.classList.add('active__section');
       const allLinks = document.querySelectorAll('a');
@@ -82,12 +83,18 @@ window.addEventListener('scroll', () => {
           link.classList.add('active');
         }
       });
-      console.log(sec.getBoundingClientRect().top);
     }
   });
 });
 // Scroll to anchor ID using scrollTO event
-
+const goToTop = document
+  .getElementsByTagName('section')[0]
+  .getBoundingClientRect().top;
+console.log(goToTop);
+topBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  window.scrollTo(0, 1000);
+});
 /**
  * End Main Functions
  * Begin Events
