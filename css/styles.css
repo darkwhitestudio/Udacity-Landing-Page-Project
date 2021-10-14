@@ -23,6 +23,7 @@ body {
   font-family: 'Merriweather', serif;
   color: #fff;
 }
+/* Helper classes */
 
 /* Typeography General*/
 h1 {
@@ -226,6 +227,7 @@ section:nth-of-type(3n + 1) .landing__container::after {
   text-decoration: none;
   cursor: pointer;
   user-select: none;
+  opacity: 0;
 }
 #to__top:hover {
   background: #fff;

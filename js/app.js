@@ -42,6 +42,7 @@ const sections = document.querySelectorAll('section');
 const virtualFrag = document.createDocumentFragment();
 const navLinks = document.querySelectorAll('menu__link');
 const topBtn = document.getElementById('to__top');
+const goToTop = document.getElementById('top').getBoundingClientRect().top;
 
 sections.forEach(section => {
   const listItem = document.createElement('li');
@@ -66,6 +67,12 @@ navLinks.forEach(link => {
 
 // Add class 'active' to section when near top of viewport
 window.addEventListener('scroll', () => {
+  if (window.scrollY >= 500) {
+    topBtn.style.opacity = 1;
+  } else {
+    topBtn.style.opacity = 0;
+  }
+  console.log(window.scrollY);
   sections.forEach(sec => {
     const boundingBox = sec.getBoundingClientRect();
     if (boundingBox.top >= 0 && boundingBox.top < 500) {
@@ -87,22 +94,13 @@ window.addEventListener('scroll', () => {
   });
 });
 // Scroll to anchor ID using scrollTO event
-const goToTop = document
-  .getElementsByTagName('section')[0]
-  .getBoundingClientRect().top;
-console.log(goToTop);
-topBtn.addEventListener('click', (event) => {
+topBtn.addEventListener('click', event => {
   event.preventDefault();
-  window.scrollTo(0, 1000);
+  // window.scrollTo(0, 1000);
+  window.scrollTo({ top: goToTop, left: 0, behavior: 'smooth' });
 });
 /**
  * End Main Functions
  * Begin Events
  *
  */
-
-// Build menu
-
-// Scroll to section on link click
-
-// Set sections as active
