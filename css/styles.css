@@ -24,7 +24,9 @@ body {
   color: #fff;
 }
 /* Helper classes */
-
+.hidden {
+  display: none;
+}
 /* Typeography General*/
 h1 {
   font-family: 'Fira Sans', sans-serif;
@@ -63,11 +65,32 @@ main {
 
 section {
   position: relative;
-  min-height: 100vh;
+  min-height: 100px;
 }
 .active__section {
   background: #333;
 }
+.collapse,
+.expand {
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+}
+section:nth-of-type(odd) .landing__container .collapse,
+section:nth-of-type(odd) .landing__container .expand {
+  right: 3em;
+}
+section:nth-of-type(even) .landing__container .collapse,
+section:nth-of-type(even) .landing__container .expand {
+  left: 3em;
+}
+.collapse::after {
+  content: '[-]';
+}
+.expand::after {
+  content: '[+]';
+}
+
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/

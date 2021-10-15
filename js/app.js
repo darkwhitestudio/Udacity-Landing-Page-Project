@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 /**
  * Define Global Variables
  *
@@ -13,11 +13,31 @@ const goToTop = document.getElementById('top').getBoundingClientRect().top;
 const burgerBtn = document.getElementsByClassName('burgerBtn')[0];
 const navBar = document.getElementsByClassName('navbar__menu')[0];
 const header = document.getElementsByClassName('page__header')[0];
+const collapse = document.querySelectorAll('.collapse');
+const expand = document.querySelectorAll('.expand');
+
+collapse.forEach(coll => {
+  coll.addEventListener('click', () => {
+    if(coll.classList.contains('collapse')){
+      coll.classList.remove('collapse');
+    coll.classList.add('expand');
+  }else{
+    coll.classList.remove('expand');
+    coll.classList.add('collapse');
+  }
+  const allP = coll.parentElement.querySelectorAll('p');
+  for(let i=0 ; i<= allP.length; i++){
+    allP[i].classList.toggle('hidden');
+  }
+  });
+});
+
 /**
  * End Global Variables
  * Start Helper Functions
  *
  */
+
 burgerBtn.addEventListener('click', evt => {
   evt.preventDefault();
   navBar.classList.toggle('active');
@@ -35,11 +55,14 @@ window.addEventListener(
     window.clearTimeout(userScroll);
     // Set a timeout to run after scrolling ends
     userScroll = setTimeout(function () {
-      header.classList.remove('active');
+      if (window.scrollY !== 0) {
+        header.classList.remove('active');
+      }
     }, 2000);
   },
   false
 );
+
 /**
  * End Helper Functions
  * Begin Main Functions
