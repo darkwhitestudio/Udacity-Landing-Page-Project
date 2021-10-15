@@ -3,6 +3,7 @@
  * Define Global Variables
  *
  */
+
 const nav = document.getElementById('navbar__list');
 const sections = document.querySelectorAll('section');
 const virtualFrag = document.createDocumentFragment();
@@ -11,6 +12,7 @@ const topBtn = document.getElementById('to__top');
 const goToTop = document.getElementById('top').getBoundingClientRect().top;
 const burgerBtn = document.getElementsByClassName('burgerBtn')[0];
 const navBar = document.getElementsByClassName('navbar__menu')[0];
+const header = document.getElementsByClassName('page__header')[0];
 /**
  * End Global Variables
  * Start Helper Functions
@@ -21,6 +23,23 @@ burgerBtn.addEventListener('click', evt => {
   navBar.classList.toggle('active');
   // alert('lol');
 });
+// Setup isScrolling variable
+let userScroll;
+
+// Listen for scroll events
+window.addEventListener(
+  'scroll',
+  function () {
+    header.classList.add('active');
+    // Clear our timeout throughout the scroll
+    window.clearTimeout(userScroll);
+    // Set a timeout to run after scrolling ends
+    userScroll = setTimeout(function () {
+      header.classList.remove('active');
+    }, 2000);
+  },
+  false
+);
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -58,7 +77,6 @@ window.addEventListener('scroll', () => {
   } else {
     topBtn.style.opacity = 0;
   }
-  console.log(window.scrollY);
   sections.forEach(sec => {
     const boundingBox = sec.getBoundingClientRect();
     if (boundingBox.top >= 0 && boundingBox.top < 500) {

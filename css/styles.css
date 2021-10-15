@@ -150,11 +150,15 @@ section {
 .page__header {
   background: #fff;
   position: fixed;
-  top: 0;
+  top: -4rem;
   width: 100%;
   z-index: 5;
+  transition: top 0.35s ease 1s;
 }
-
+.page__header.active {
+  top: 0;
+  transition: top 0.5s ease 1s;
+}
 /* Footer Styles */
 .page__footer {
   background: #000;
