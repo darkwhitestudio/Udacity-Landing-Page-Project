@@ -100,7 +100,52 @@ section {
   color: #fff;
   transition: ease 0.3s all;
 }
+.burgerBtnHolder {
+  width: 100%;
+  height: 4em;
+  background-color: 000;
+  display: none;
+}
+.burgerBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  padding: 0.5em 0.3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 35px;
+  height: 20px;
+  background: #fff;
+  border-radius: 2px;
+}
+.line {
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  border-radius: 10px;
+}
+@media (max-width: 700px) {
+  /* Responsive Navigation */
+  .navbar__menu {
+    display: none;
+  }
+  .navbar__menu.active {
+    display: block;
+  }
+  .navbar__menu ul {
+    padding-left: 0;
+  }
 
+  .navbar__menu li,
+  .navbar__menu li a {
+    width: 100%;
+  }
+
+  .burgerBtnHolder {
+    display: block;
+  }
+}
 /* Header Styles */
 .page__header {
   background: #fff;

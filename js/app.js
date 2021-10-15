@@ -1,35 +1,26 @@
 // 'use strict';
 /**
- *
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- *
- * Dependencies: None
- *
- * JS Version: ES2015/ES6
- *
- * JS Standard: ESlint
- *
- */
-
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
- */
-
-/**
  * Define Global Variables
  *
  */
-
+const nav = document.getElementById('navbar__list');
+const sections = document.querySelectorAll('section');
+const virtualFrag = document.createDocumentFragment();
+const navLinks = document.querySelectorAll('menu__link');
+const topBtn = document.getElementById('to__top');
+const goToTop = document.getElementById('top').getBoundingClientRect().top;
+const burgerBtn = document.getElementsByClassName('burgerBtn')[0];
+const navBar = document.getElementsByClassName('navbar__menu')[0];
 /**
  * End Global Variables
  * Start Helper Functions
  *
  */
-
+burgerBtn.addEventListener('click', evt => {
+  evt.preventDefault();
+  navBar.classList.toggle('active');
+  // alert('lol');
+});
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -37,12 +28,6 @@
  */
 
 // build the nav
-const nav = document.getElementById('navbar__list');
-const sections = document.querySelectorAll('section');
-const virtualFrag = document.createDocumentFragment();
-const navLinks = document.querySelectorAll('menu__link');
-const topBtn = document.getElementById('to__top');
-const goToTop = document.getElementById('top').getBoundingClientRect().top;
 
 sections.forEach(section => {
   const listItem = document.createElement('li');
@@ -52,6 +37,7 @@ sections.forEach(section => {
   listLink.classList.add('menu__link');
   listLink.addEventListener('click', e => {
     e.preventDefault();
+    navBar.classList.toggle('active');
     section.scrollIntoView({ behavior: 'smooth' });
   });
   listItem.appendChild(listLink);
