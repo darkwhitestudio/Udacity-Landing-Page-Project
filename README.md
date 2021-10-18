@@ -1,13 +1,17 @@
+<!-- Add banner here -->
+
 # Landing Page Project
 
-## Table of Contents
+![Project sneak peek!](/images/banner.jpg 'Project screenshot')
 
-* [Instructions](#instructions)
+### By Essam Maccar
 
-## Instructions
+## Project Summary
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+I have enjoyed writing every line of code, stretching myself to the max and I did my best, the project was challenging and it took me a lot of searching and reading to get satisfied with the end result
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Credits
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+- First to all the community of the Nanodegree and my tutors
+- Stackoverflow https://stackoverflow.com/
+- Web Dev Simplified - YouTube video where I got help building the responsive navBar https://www.youtube.com/watch?v=At4B7A4GOPg

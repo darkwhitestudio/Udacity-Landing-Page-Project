@@ -3,7 +3,6 @@
  * Define Global Variables
  *
  */
-
 const nav = document.getElementById('navbar__list');
 const sections = document.querySelectorAll('section');
 const virtualFrag = document.createDocumentFragment();
@@ -16,36 +15,41 @@ const header = document.getElementsByClassName('page__header')[0];
 const collapse = document.querySelectorAll('.collapse');
 const expand = document.querySelectorAll('.expand');
 
-collapse.forEach(coll => {
-  coll.addEventListener('click', () => {
-    if(coll.classList.contains('collapse')){
-      coll.classList.remove('collapse');
-    coll.classList.add('expand');
-  }else{
-    coll.classList.remove('expand');
-    coll.classList.add('collapse');
-  }
-  const allP = coll.parentElement.querySelectorAll('p');
-  for(let i=0 ; i<= allP.length; i++){
-    allP[i].classList.toggle('hidden');
-  }
-  });
-});
-
 /**
  * End Global Variables
  * Start Helper Functions
- *
+ * Gollapse sections feature
  */
-
+collapse.forEach(coll => {
+  coll.addEventListener('click', () => {
+    if (coll.classList.contains('collapse')) {
+      /*
+      Assigning a css class to change
+      from - to + for collapse and expand
+      */
+      coll.classList.remove('collapse');
+      coll.classList.add('expand');
+    } else {
+      coll.classList.remove('expand');
+      coll.classList.add('collapse');
+    }
+    //just hide the p elements and keep the section heading [better UI]
+    const allP = coll.parentElement.querySelectorAll('p');
+    for (let i = 0; i <= allP.length; i++) {
+      allP[i].classList.toggle('hidden');
+    }
+  });
+});
+/*
+ *burgerBtn for responsive navBar
+ */
 burgerBtn.addEventListener('click', evt => {
   evt.preventDefault();
   navBar.classList.toggle('active');
-  // alert('lol');
 });
-// Setup isScrolling variable
-let userScroll;
 
+// Show and hide the Nav while scrolling feature
+let userScroll;
 // Listen for scroll events
 window.addEventListener(
   'scroll',
@@ -70,7 +74,6 @@ window.addEventListener(
  */
 
 // build the nav
-
 sections.forEach(section => {
   const listItem = document.createElement('li');
   const listLink = document.createElement('a');
@@ -126,8 +129,3 @@ topBtn.addEventListener('click', event => {
   // window.scrollTo(0, 1000);
   window.scrollTo({ top: goToTop, left: 0, behavior: 'smooth' });
 });
-/**
- * End Main Functions
- * Begin Events
- *
- */

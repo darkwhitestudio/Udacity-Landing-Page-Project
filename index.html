@@ -12,11 +12,10 @@
     />
     <!-- Load Styles -->
     <link href="css/styles.css" rel="stylesheet" />
+    <!-- Used defer attribute to put my JS in the head and still it perform as before </body> -->
     <script src="js/app.js" defer></script>
   </head>
   <body>
-    <!-- HTML Follows BEM naming conventions
-  IDs are only used for sections to connect menu achors to sections -->
     <header class="page__header active">
       <!-- Hamburger btn for responsive Navigation -->
       <div class="burgerBtnHolder">
@@ -27,7 +26,7 @@
         </a>
       </div>
       <nav class="navbar__menu">
-        <!-- Navigation starts as empty UL that will be populated with JS -->
+        <!-- JS auto populated links-->
         <ul id="navbar__list"></ul>
       </nav>
     </header>

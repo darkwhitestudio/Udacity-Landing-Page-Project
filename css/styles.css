@@ -1,13 +1,3 @@
-/*
- *
- * CSS written based on SMACSS architecture.
- * To learn more, visit: http://smacss.com/
- *
- * For simplicity, no reset or normalize is added.
- * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
- *
-*/
-
 /* ---- Base Rules ---- */
 html {
   scroll-behavior: smooth;
@@ -24,10 +14,11 @@ body {
   color: #fff;
 }
 /* Helper classes */
+/* used to hide elements when section collapse */
 .hidden {
   display: none;
 }
-/* Typeography General*/
+/* Typography General*/
 h1 {
   font-family: 'Fira Sans', sans-serif;
   font-size: 3em;
@@ -76,6 +67,7 @@ section {
   cursor: pointer;
   user-select: none;
 }
+/* to maintain the [-] & [+] buttons with text direction of sections */
 section:nth-of-type(odd) .landing__container .collapse,
 section:nth-of-type(odd) .landing__container .expand {
   right: 3em;
@@ -123,6 +115,8 @@ section:nth-of-type(even) .landing__container .expand {
   color: #fff;
   transition: ease 0.3s all;
 }
+
+/* Burger button for responsiveness */
 .burgerBtnHolder {
   width: 100%;
   height: 4em;
@@ -148,8 +142,9 @@ section:nth-of-type(even) .landing__container .expand {
   background-color: black;
   border-radius: 10px;
 }
+
+/* Responsive Navigation */
 @media (max-width: 700px) {
-  /* Responsive Navigation */
   .navbar__menu {
     display: none;
   }
@@ -192,7 +187,27 @@ section:nth-of-type(even) .landing__container .expand {
 .page__footer p {
   color: #fff;
 }
-
+/* Back to top button */
+#to__top {
+  display: block;
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  padding: 0.25em 0.75em;
+  background: #cc1;
+  border: none;
+  color: #000;
+  border-radius: 0.3em;
+  font: 900 1.3em sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0;
+}
+#to__top:hover {
+  background: #fff;
+  color: #cc1;
+}
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
 .landing__container {
@@ -283,27 +298,6 @@ section:nth-of-type(3n + 1) .landing__container::after {
   border-radius: 50%;
   opacity: 0;
   transition: ease 0.5s all;
-}
-
-#to__top {
-  display: block;
-  position: fixed;
-  bottom: 2em;
-  right: 2em;
-  padding: 0.25em 0.75em;
-  background: #cc1;
-  border: none;
-  color: #000;
-  border-radius: 0.3em;
-  font: 900 1.3em sans-serif;
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-  opacity: 0;
-}
-#to__top:hover {
-  background: #fff;
-  color: #cc1;
 }
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
